@@ -8,3 +8,4 @@ if id -u "${DEFAULT_USER}" >/dev/null 2>&1; then
 else
     useradd -s /bin/bash -m "$DEFAULT_USER"
     echo "${DEFAULT_USER}:${DEFAULT_USER}" | chpasswd
+fi
