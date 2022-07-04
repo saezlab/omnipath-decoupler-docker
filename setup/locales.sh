@@ -9,9 +9,6 @@ sed -i 's/^/#/' /etc/locale.gen
 echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo "hu_HU.UTF-8 UTF-8" >> /etc/locale.gen
-locale-gen en_GB.utf8
-locale-gen en_US.utf8
-locale-gen hu_HU.utf8
-/usr/sbin/update-locale LANG=${LANG}
+locale-gen --purge en_GB.utf8 en_US.utf8 hu_HU.utf8
 
-dpkg-reconfigure locales
+/usr/sbin/update-locale LANG=${LANG}
