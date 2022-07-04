@@ -28,11 +28,11 @@ WORKDIR omnipath_setup
 
 RUN chmod +x *.sh
 
+RUN bash locales.sh
 RUN bash default_user.sh
 
 RUN chown -R omnipath:omnipath .
 
-RUN dpkg-reconfigure locales
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 2
