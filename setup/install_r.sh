@@ -22,7 +22,8 @@ apt-get -y install --no-install-recommends \
       wget \
       dirmngr \
       gpg \
-      gpg-agent
+      gpg-agent \
+      libxml2-dev
 
 echo "deb http://cloud.r-project.org/bin/linux/ubuntu ${UBUNTU_VERSION}-${CRAN_LINUX_VERSION}/" >> /etc/apt/sources.list
 
@@ -43,3 +44,13 @@ ln -s ${R_LIBS_SITE}/littler/examples/install.r /usr/local/bin/install.r
 ln -s ${R_LIBS_SITE}/littler/examples/install2.r /usr/local/bin/install2.r
 ln -s ${R_LIBS_SITE}/littler/examples/installGithub.r /usr/local/bin/installGithub.r
 ln -s ${R_LIBS_SITE}/littler/bin/r /usr/local/bin/r
+
+mkdir -p /etc/R
+
+cat << EOF > /etc/R/Rprofile.site
+local({
+  r <- getOption("repos")
+  r["CRAN"] <- "https://cloud.r-project.org/"
+  options(repos = r)
+})
+EOF
