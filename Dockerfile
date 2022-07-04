@@ -3,7 +3,7 @@
 # https://github.com/saezlab/saezverse
 # https://github.com/rocker-org/rocker-versioned2
 
-FROM phusion/baseimage:22.04
+FROM phusion/baseimage:jammy-1.0.0
 
 LABEL org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.source="https://github.com/saezlab/omnipath-decoupler-docker" \
@@ -14,28 +14,37 @@ CMD ["/sbin/my_init"]
 
 ENV PASSWORD=szeged2022
 ENV TZ=Europe/Berlin
+ENV LANGUAGE=en_GB.UTF-8
 ENV LANG=en_GB.UTF-8
+ENV LC_ALL=en_GB.UTF-8
 ENV DEFAULT_USER=omnipath
 ENV R_VERSION=4.2.1
 ENV R_HOME=/usr/local/lib/R
+ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR setup
+COPY setup omnipath_setup
 
-RUN default_user.sh
-RUN apt -y update
-RUN apt -y upgrade
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 2
+WORKDIR omnipath_setup
 
 RUN chmod +x *.sh
+
+RUN bash default_user.sh
+
+RUN chown -R omnipath:omnipath .
+
+RUN dpkg-reconfigure locales
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 2
+
 RUN bash dependencies.sh
-
 RUN bash installpy.sh
-
 RUN bash install_r.sh
 
 RUN Rscript --vanilla install.R
 
 WORKDIR /home/omnipath/
 RUN rm -rf .cache/pip
-RUN rm -rf setup
+RUN rm -rf omnipath_setup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN unset DEBIAN_FRONTEND
