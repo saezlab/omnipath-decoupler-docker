@@ -3,7 +3,7 @@
 DEBIAN_FRONTEND=noninteractive
 
 # For building C-Python bindings
-apt-get -y install libcurl4-openssl-dev libssl-dev python3 python3-dev python3-pip
+apt-get -y install libcurl4-openssl-dev libssl-dev python3 python3-dev python3-pip git
 # Extras for pypath
 apt-get -y install python3-igraph libcairo2-dev pkg-config
 
