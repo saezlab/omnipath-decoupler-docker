@@ -21,7 +21,7 @@ set input-meta on
 set convert-meta off
 set output-meta on
 
-$if mode=emacs
+\$if mode=emacs
 
 # for linux console and RH/Debian xterm
 "\e[1~": beginning-of-line
@@ -48,5 +48,5 @@ $if mode=emacs
 # for freebsd console
 "\e[H": beginning-of-line
 "\e[F": end-of-line
-$endif
+\$endif
 EOF
