@@ -3,7 +3,7 @@
 DEBIAN_FRONTEND=noninteractive
 
 # system tools
-apt-get -y install sudo source-highlight
+apt-get -y install sudo source-highlight nodejs npm
 
 # For building C-Python bindings
 apt-get -y install libcurl4-openssl-dev libssl-dev python3 python3-dev python3-pip git
