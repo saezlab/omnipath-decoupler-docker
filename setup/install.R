@@ -6,3 +6,7 @@ library(devtools)
 
 devtools::install_github("saezlab/OmnipathR")
 devtools::install_github("jalvesaq/colorout")
+
+install.packages("IRkernel")
+
+IRkernel::installspec(user = FALSE)
