@@ -11,7 +11,7 @@ jobs:
     steps:
       -
         name: Login to DockerHub
-        uses: docker/login-action@v1 
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: saezlab/omnipath-decoupler-docker:latest
+          tags: deeenes/omnipath-decoupler:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
