@@ -14,16 +14,22 @@ R_HOME=${R_HOME:-/usr/lib/R}
 apt-get update
 
 apt-get -y install --no-install-recommends \
-      ca-certificates \
-      less \
-      libopenblas-base \
-      locales \
-      vim-tiny \
-      wget \
-      dirmngr \
-      gpg \
-      gpg-agent \
-      libxml2-dev
+    ca-certificates \
+    less \
+    libopenblas-base \
+    locales \
+    vim-tiny \
+    wget \
+    dirmngr \
+    gpg \
+    gpg-agent \
+    fonts-dejavu \
+    unixodbc \
+    unixodbc-dev \
+    r-cran-rodbc \
+    gfortran \
+    gcc \
+    libxml2-dev
 
 echo "deb http://cloud.r-project.org/bin/linux/ubuntu ${UBUNTU_VERSION}-${CRAN_LINUX_VERSION}/" >> /etc/apt/sources.list
 

@@ -60,3 +60,5 @@ RUN curl -o /home/omnipath/.pythonrc -L 'https://raw.githubusercontent.com/lonet
 RUN printf 'options(menu.graphics=FALSE)\nlibrary(colorout)\n' > /home/omnipath/.Rprofile
 RUN printf '\n\nexport PYTHONSTARTUP=~/.pythonrc\n' >> /home/omnipath/.bashrc
 RUN mkdir notebooks
+
+USER root
