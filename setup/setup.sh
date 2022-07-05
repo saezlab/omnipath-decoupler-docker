@@ -9,7 +9,8 @@ alias grep="grep --color=auto"
 PS1='\[\e[0;38;5;007m\]\u@\[\e[0;38;5;223m\]\h \w \$\[\e[0;38;5;177m\] '
 EOF
 
-chmod +x /etc/profile.d/colors.sh
+chmod +x /etc/profile.d/*
+chmod +x /etc/container_environment.sh
 
 cat << EOF > /etc/inputrc
 # do not bell on tab-completion
