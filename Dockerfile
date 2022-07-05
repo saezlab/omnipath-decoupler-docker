@@ -43,7 +43,7 @@ RUN bash install_r.sh
 
 RUN Rscript --vanilla install.R
 
-RUN setup.sh
+RUN bash setup.sh
 
 WORKDIR /home/omnipath/
 RUN rm -rf .cache/pip
