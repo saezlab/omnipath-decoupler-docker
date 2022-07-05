@@ -13,3 +13,6 @@ apt-get -y install python3-igraph libcairo2-dev pkg-config
 
 # Python tools dependencies (unstated dependencies?)
 pip3 install --no-warn-script-location bioservices numpy scipy statsmodels pycurl pycairo PyYAML
+
+# Jupyter
+pip3 install --no-warn-script-location jupyter
