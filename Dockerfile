@@ -43,8 +43,19 @@ RUN bash install_r.sh
 
 RUN Rscript --vanilla install.R
 
+RUN setup.sh
+
 WORKDIR /home/omnipath/
 RUN rm -rf .cache/pip
 RUN rm -rf omnipath_setup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN unset DEBIAN_FRONTEND
+
+RUN usermod -aG sudo omnipath
+
+USER omnipath
+
+RUN curl -o /home/omnipath/.pythonrc -L 'https://raw.githubusercontent.com/lonetwin/pythonrc/master/pythonrc.py'
+
+RUN printf 'options(menu.graphics=FALSE)\nlibrary(colorout)\n' > /home/omnipath/.Rprofile
+RUN printf '\n\nexport PYTHONSTARTUP=~/.pythonrc\n' >> /home/omnipath/.bashrc
